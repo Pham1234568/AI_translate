@@ -1,0 +1,39 @@
+research_task:
+  description: >
+    You will be given {data}, a 2D Python List[List[str|None]] structured as follows:
+      - Row 0 is the header: the first column is always 'String', and the rest are language names.
+      - Rows 1…n contain translation data for each key.
+    YOU MUST identify the list of language columns **explicitly** from the header row for translating later.
+    ONLY and must translate into languages that are actually present — do NOT assume or invent or copy (for example copy English phase to French language).
+
+    Your responsibilities:
+      1. Parse the headers to identify all **existing** language columns.
+        → DO NOT assume the existence of any column unless explicitly present.
+        → DO NOT create new columns (e.g., 'English').
+
+      2. For each row:
+        a. Derive the English phrase from the 'String' key:
+          - Remove the prefix 'STR_'
+          - Replace all underscores with spaces
+          - Convert the phrase to Title Case
+        b. Use this derived phrase as the translation base.
+        c. IMPORTANT STEP: For each language cell:
+          - If the cell is:
+              • Empty  
+              • Null  
+              • Whitespace  
+              • **OR exactly matches `english_phrase`** (**CRITICAL**: this is not a valid translation!)
+              → Then translate `english_phrase` into the TARGET LANGUAGE.
+              → The translation must:
+                • Be natural and fluent  
+                • Match Title Case  
+                • Contain **no** extra punctuation, quotes, or added words  
+          - Otherwise: leave the cell unchanged.
+  expected_output: >
+     A 2D Python `List[List[str]]` of identical shape where:
+      - All originally missing translation cells are now correctly filled
+      - Table structure is preserved exactly (no added columns, no reordering)
+      - Existing non-empty translations remain unchanged
+      - All derived English phrases are used strictly as translation bases
+      - All new translations follow capitalization and output rules strictly
+  agent: translator_researcher
