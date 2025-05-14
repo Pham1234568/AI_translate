@@ -6,10 +6,10 @@ import pandas as pd
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 os.environ["OPENROUTER_API_KEY"] = os.getenv("OPENROUTER_API_KEY")
 name_0="openrouter/tngtech/deepseek-r1t-chimera:free"
-name_z="openrouter/google/gemini-2.5-pro-exp-03-25:free"
+name_z="openrouter/meta-llama/llama-4-scout:free"
 name="openai/gpt-4.1-mini-2025-04-14"
 llm=LLM(
-    model=name_0,
+    model=name_z,
     temperature=0.0,
 )
 import yaml

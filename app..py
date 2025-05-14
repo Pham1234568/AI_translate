@@ -12,7 +12,6 @@ def process_excel(file, output_name):
         df = pd.read_excel(file.name)
         table = [df.columns.tolist()] + df.values.tolist()
 
-        # Run CrewAI process
         result = LanguagesExport().crew().kickoff(inputs={"data": table})
         result_df = pd.DataFrame(data=result["data"][1:], columns=result["data"][0])
         

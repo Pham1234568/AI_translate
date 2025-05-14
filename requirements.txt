@@ -1,0 +1,7 @@
+crewai[tools]>=0.114.0,<1.0.0
+gradio>=5.25.2
+pandas>=2.2.3
+tk
+openpyxl
+pyyaml
+numpy
